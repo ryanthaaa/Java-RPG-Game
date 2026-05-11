@@ -1,4 +1,4 @@
-public class Slime extends Musuh {
+public class Slime extends Musuh implements CanLoot {
     
     public Slime () {
         super("Slime Berlendir", 50);
@@ -11,6 +11,10 @@ public class Slime extends Musuh {
 
     public void enemyVoice() {
         System.out.println("HIDUPPP JOKOWIII!!!!");
+    }
+
+    public void itemsLoot() {
+        System.out.println(this.enemyName + " menjatuhkan sebuah items! Anda mendapatkan Items MUWANI SSR💦💦");
     }
 
 }

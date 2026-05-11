@@ -41,20 +41,51 @@ public class AreaBattle {
                 System.out.println("\n>>> HASIL SERANGAN ANDA <<<");
                 int indexMonster = pilihTarget - 1;
                 monsterWave[indexMonster].damageTaken(power);
+
+                if ( monsterWave[indexMonster].healtPoint <= 0) {
+                    System.out.println("\n" + monsterWave[indexMonster].enemyName + " sudah dikalahkan!🤩");
+                    if ( monsterWave[indexMonster] instanceof CanLoot) {
+                        CanLoot monsterLoot = (CanLoot) monsterWave[indexMonster];
+                        monsterLoot.itemsLoot();
+                    }
+                }
             }
 
             System.out.println("\n>>> GILIRAN MONSTER MEMBALAS <<<");
 
-            for ( int i = 0; i < monsterWave.length; i++) {
-                if ( monsterWave[i].healtPoint > 0) {
-                    monsterWave[i].enemyVoice();
-                    monsterWave[i].attackPlayer();
+            for ( int i = 0; i < monsterWave.length; i++ ) {
+                if ( monsterWave[i].healtPoint > 0 ) {
+                    System.out.println();
+                    Musuh activeMonster = monsterWave[i];
+                    activeMonster.enemyVoice();
+
+                    if ( activeMonster instanceof CanFly ) {
+                        System.out.println(">> PERINGATAN SERANGAN UDARA TERDETEKSI");
+                        CanFly flyingMonster = (CanFly) activeMonster;
+                        flyingMonster.takeOff();
+                        flyingMonster.airAttack();
+                        System.out.println();
+                    } else {
+                        activeMonster.attackPlayer();
+                    }
                 } else {
                     System.out.println(monsterWave[i].enemyName + " sudah mati dan tidak bisa menyerang.");
                 }
-                System.out.println("<----------------------------------->");
             }
            
+        }
+
+        boolean everyoneDead = true;
+        for ( int i = 0; i < monsterWave.length; i++ ) {
+            if ( monsterWave[i].healtPoint > 0) {
+                everyoneDead = false;
+                break;
+            }
+        }
+
+        if ( everyoneDead ) {
+            System.out.println("\nSELAMAT🥳🥳🥳! Anda telah menyapu bersih gelobang monster ini");
+            isPlaying = false;
         }
 
         input.close();

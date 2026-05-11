@@ -1,4 +1,4 @@
-public class Dragon extends Musuh {
+public class Dragon extends Musuh implements CanFly {
 
     public Dragon () {
         super("Black Fire Dragon", 500);
@@ -12,4 +12,13 @@ public class Dragon extends Musuh {
     public void enemyVoice() {
         System.out.println("Rawrrrrrrrrsrrr!!!!");
     }
+
+    public void takeOff() {
+        System.out.println(this.enemyName + " terbang tinggi! Sulit diserang.");
+    }
+
+    public void airAttack() {
+        System.out.println(this.enemyName + " menyemburkan badai api! Pemain -80 HP.");
+    }
+
 }

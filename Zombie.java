@@ -1,4 +1,4 @@
-public class Zombie extends Musuh{
+public class Zombie extends Musuh implements CanLoot {
     public Zombie() {
         super("Zombie Kalcer", 200);
     }
@@ -10,5 +10,9 @@ public class Zombie extends Musuh{
 
     public void enemyVoice() {
         System.out.println("Hoekkkk CUIHHHHHH!!!!");
+    }
+
+    public void itemsLoot() {
+        System.out.println(this.enemyName + " menjatuhkan sebuah items! Anda mendapatkan LENDIRR SSR🤢🤮");
     }
 }
