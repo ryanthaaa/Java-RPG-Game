@@ -1,4 +1,4 @@
-# Java-RPG-Game
-Icikiwir Kalcer Wokwok
+# Game Part 3
+Menambahkan Input Invalid Execption
 
-<img width="1007" height="967" alt="image" src="https://github.com/user-attachments/assets/c936f84a-104e-4e96-be52-9da15518e9dd" />
+<img width="737" height="962" alt="image" src="https://github.com/user-attachments/assets/880fa214-ae48-47ac-88e3-9af898e74d7f" />
